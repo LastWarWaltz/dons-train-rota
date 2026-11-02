@@ -767,9 +767,9 @@ var DEFAULT_MEMBERS = [
 ];
 // Configured with exact Supabase URL
 var SUPABASE_URL = "https://qvsindceieqaqpjtuxss.supabase.co";
-var SUPABASE_ANON_KEY = "YOUR_PUBLISHABLE_KEY_HERE";
+var SUPABASE_ANON_KEY = "sb_publishable_WcF3zkkFODuR58urvvq15w_O-kqjKW0";
 var supabaseClient = null;
-if (typeof window.supabase !== 'undefined' && SUPABASE_ANON_KEY !== "YOUR_PUBLISHABLE_KEY_HERE") {
+if (typeof window.supabase !== 'undefined' && SUPABASE_ANON_KEY !== "sb_publishable_WcF3zkkFODuR58urvvq15w_O-kqjKW0") {
 supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 }
 var MEMBERS = DEFAULT_MEMBERS.slice();
