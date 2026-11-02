@@ -22,12 +22,12 @@
 --text-dark: #64748b;
 --border-color: rgba(212, 175, 55, 0.25);
 }
-​* {
+* {
 box-sizing: border-box;
 margin: 0;
 padding: 0;
 }
-​body {
+body {
 background-color: var(--bg-dark);
 background-image:
 radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 70%),
@@ -39,11 +39,11 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 }
-​h1, h2, h3, .brand-title, .role-badge {
+h1, h2, h3, .brand-title, .role-badge {
 font-family: Georgia, "Times New Roman", Times, serif;
 letter-spacing: 1px;
 }
-​header {
+header {
 background: linear-gradient(180deg, #181820 0%, #0d0d11 100%);
 border-bottom: 2px solid var(--border-color);
 position: sticky;
@@ -51,7 +51,7 @@ top: 0;
 z-index: 100;
 box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
 }
-​.header-container {
+.header-container {
 max-width: 1100px;
 margin: 0 auto;
 padding: 1rem 1.25rem;
@@ -61,12 +61,12 @@ align-items: center;
 justify-content: space-between;
 gap: 1rem;
 }
-​.logo-area {
+.logo-area {
 display: flex;
 align-items: center;
 gap: 0.85rem;
 }
-​.logo-icon {
+.logo-icon {
 width: 44px;
 height: 44px;
 border-radius: 10px;
@@ -77,12 +77,12 @@ align-items: center;
 justify-content: center;
 box-shadow: 0 0 15px var(--gold-glow);
 }
-​.logo-icon svg {
+.logo-icon svg {
 width: 24px;
 height: 24px;
 fill: #0b0b0e;
 }
-​.brand-title {
+.brand-title {
 font-size: 1.35rem;
 font-weight: 800;
 color: var(--gold-light);
@@ -91,7 +91,7 @@ display: flex;
 align-items: center;
 gap: 0.5rem;
 }
-​.crew-tag {
+.crew-tag {
 font-size: 0.65rem;
 padding: 0.2rem 0.5rem;
 border-radius: 4px;
@@ -101,11 +101,11 @@ border: 1px solid var(--gold-primary);
 font-weight: bold;
 font-family: sans-serif;
 }
-​.subtitle {
+.subtitle {
 font-size: 0.75rem;
 color: var(--text-muted);
 }
-​.controls-group {
+.controls-group {
 display: flex;
 align-items: center;
 gap: 0.4rem;
@@ -114,7 +114,7 @@ padding: 0.4rem;
 border-radius: 12px;
 border: 1px solid var(--border-color);
 }
-​.btn {
+.btn {
 background: transparent;
 border: 1px solid transparent;
 color: var(--text-main);
@@ -129,38 +129,38 @@ align-items: center;
 justify-content: center;
 gap: 0.3rem;
 }
-​.btn:hover {
+.btn:hover {
 background-color: rgba(212, 175, 55, 0.15);
 border-color: var(--border-color);
 color: var(--gold-light);
 }
-​.btn-gold {
+.btn-gold {
 background: linear-gradient(135deg, var(--gold-primary), var(--gold-dark));
 color: #0b0b0e;
 font-weight: 800;
 border: none;
 box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
 }
-​.btn-gold:hover {
+.btn-gold:hover {
 background: linear-gradient(135deg, #e5b842, #a37c15);
 color: #000;
 }
-​.btn-danger {
+.btn-danger {
 background-color: rgba(153, 27, 27, 0.3);
 border: 1px solid rgba(239, 68, 68, 0.4);
 color: var(--red-light);
 }
-​.btn-danger:hover {
+.btn-danger:hover {
 background-color: rgba(153, 27, 27, 0.6);
 border-color: rgba(239, 68, 68, 0.8);
 color: #ffffff;
 }
-​.btn-sm {
+.btn-sm {
 padding: 0.25rem 0.5rem;
 font-size: 0.75rem;
 border-radius: 6px;
 }
-​.date-input, .text-input {
+.date-input, .text-input {
 background-color: var(--bg-card);
 color: var(--gold-light);
 border: 1px solid var(--border-color);
@@ -171,11 +171,11 @@ font-weight: bold;
 outline: none;
 font-family: inherit;
 }
-​.date-input::-webkit-calendar-picker-indicator {
+.date-input::-webkit-calendar-picker-indicator {
 filter: invert(0.8) sepia(1) saturate(5) hue-rotate(5deg);
 cursor: pointer;
 }
-​main {
+main {
 max-width: 1100px;
 margin: 0 auto;
 padding: 2rem 1.25rem;
@@ -184,14 +184,14 @@ display: flex;
 flex-direction: column;
 gap: 1.75rem;
 }
-​.date-banner {
+.date-banner {
 text-align: center;
 padding: 1.25rem;
 background: linear-gradient(180deg, rgba(21, 21, 28, 0.8) 0%, rgba(11, 11, 14, 0.4) 100%);
 border-radius: 16px;
 border: 1px solid var(--border-color);
 }
-​.date-banner .day-name {
+.date-banner .day-name {
 font-size: 0.85rem;
 text-transform: uppercase;
 letter-spacing: 2px;
@@ -199,7 +199,7 @@ color: var(--gold-primary);
 font-weight: 800;
 font-family: Georgia, serif;
 }
-​.date-banner .date-display {
+.date-banner .date-display {
 font-size: 2.25rem;
 font-weight: 900;
 color: #ffffff;
@@ -207,12 +207,12 @@ font-family: Georgia, serif;
 text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 margin-top: 0.2rem;
 }
-​.cards-grid {
+.cards-grid {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 gap: 1.5rem;
 }
-​.duty-card {
+.duty-card {
 background-color: var(--bg-card);
 border-radius: 18px;
 padding: 1.75rem;
@@ -225,21 +225,21 @@ justify-content: space-between;
 min-height: 220px;
 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
-​.duty-card.conductor {
+.duty-card.conductor {
 border-color: var(--gold-primary);
 box-shadow: 0 10px 30px -5px rgba(212, 175, 55, 0.2);
 }
-​.duty-card.vip {
+.duty-card.vip {
 border-color: rgba(220, 38, 38, 0.4);
 box-shadow: 0 10px 30px -5px rgba(153, 27, 27, 0.3);
 }
-​.card-top {
+.card-top {
 display: flex;
 justify-content: space-between;
 align-items: center;
 margin-bottom: 1.25rem;
 }
-​.role-badge {
+.role-badge {
 display: inline-flex;
 align-items: center;
 gap: 0.4rem;
@@ -249,33 +249,33 @@ font-size: 0.75rem;
 font-weight: 800;
 text-transform: uppercase;
 }
-​.conductor .role-badge {
+.conductor .role-badge {
 background-color: rgba(212, 175, 55, 0.15);
 color: var(--gold-light);
 border: 1px solid var(--gold-primary);
 }
-​.vip .role-badge {
+.vip .role-badge {
 background-color: rgba(153, 27, 27, 0.3);
 color: var(--red-light);
 border: 1px solid rgba(239, 68, 68, 0.4);
 }
-​.role-badge svg {
+.role-badge svg {
 width: 14px;
 height: 14px;
 fill: currentColor;
 }
-​.role-desc {
+.role-desc {
 font-size: 0.75rem;
 color: var(--text-muted);
 }
-​.member-label {
+.member-label {
 font-size: 0.7rem;
 text-transform: uppercase;
 color: var(--text-muted);
 letter-spacing: 1px;
 font-weight: 700;
 }
-​.member-name {
+.member-name {
 font-size: 2.5rem;
 font-weight: 900;
 margin-top: 0.2rem;
@@ -283,15 +283,15 @@ font-family: Georgia, serif;
 letter-spacing: 0.5px;
 line-height: 1.1;
 }
-​.conductor .member-name {
+.conductor .member-name {
 color: #ffffff;
 text-shadow: 0 0 12px var(--gold-glow);
 }
-​.vip .member-name {
+.vip .member-name {
 color: var(--gold-light);
 text-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
 }
-​.card-footer {
+.card-footer {
 margin-top: 1.5rem;
 padding-top: 1rem;
 border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -301,26 +301,26 @@ justify-content: space-between;
 font-size: 0.75rem;
 color: var(--text-muted);
 }
-​.card-watermark {
+.card-watermark {
 position: absolute;
 right: -15px;
 bottom: -15px;
 opacity: 0.04;
 pointer-events: none;
 }
-​.card-watermark svg {
+.card-watermark svg {
 width: 180px;
 height: 180px;
 fill: white;
 }
-​.section-block {
+.section-block {
 background-color: var(--bg-card);
 border-radius: 18px;
 padding: 1.5rem;
 border: 1px solid var(--border-color);
 box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
-​.section-header {
+.section-header {
 display: flex;
 flex-wrap: wrap;
 justify-content: space-between;
@@ -328,7 +328,7 @@ align-items: center;
 gap: 1rem;
 margin-bottom: 1.25rem;
 }
-​.section-title {
+.section-title {
 font-size: 1.1rem;
 font-weight: 700;
 display: flex;
@@ -337,17 +337,17 @@ gap: 0.6rem;
 font-family: Georgia, serif;
 color: var(--gold-light);
 }
-​.section-title svg {
+.section-title svg {
 width: 20px;
 height: 20px;
 fill: var(--gold-primary);
 }
-​.section-desc {
+.section-desc {
 font-size: 0.8rem;
 color: var(--text-muted);
 margin-top: 0.2rem;
 }
-​.select-wrapper select {
+.select-wrapper select {
 background-color: var(--bg-input);
 color: var(--gold-light);
 border: 1px solid var(--border-color);
@@ -360,13 +360,13 @@ width: 220px;
 cursor: pointer;
 font-family: inherit;
 }
-​.finder-grid {
+.finder-grid {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 gap: 1rem;
 margin-top: 1rem;
 }
-​.result-card {
+.result-card {
 background-color: var(--bg-input);
 border-radius: 12px;
 padding: 1rem;
@@ -375,27 +375,27 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 }
-​.result-card.conductor-res {
+.result-card.conductor-res {
 border-left: 4px solid var(--gold-primary);
 }
-​.result-card.vip-res {
+.result-card.vip-res {
 border-left: 4px solid var(--red-accent);
 }
-​.result-title {
+.result-title {
 font-size: 0.75rem;
 color: var(--text-muted);
 font-weight: 600;
 text-transform: uppercase;
 }
-​.result-date {
+.result-date {
 font-size: 1.1rem;
 font-weight: 800;
 margin-top: 0.2rem;
 font-family: Georgia, serif;
 }
-​.result-card.conductor-res .result-date { color: var(--gold-light); }
+.result-card.conductor-res .result-date { color: var(--gold-light); }
 .result-card.vip-res .result-date { color: var(--red-light); }
-​.days-badge {
+.days-badge {
 font-size: 0.75rem;
 font-weight: bold;
 padding: 0.3rem 0.6rem;
@@ -404,20 +404,20 @@ background-color: rgba(212, 175, 55, 0.1);
 color: var(--gold-light);
 border: 1px solid rgba(212, 175, 55, 0.2);
 }
-​.add-member-form {
+.add-member-form {
 display: flex;
 gap: 0.5rem;
 margin-bottom: 1.25rem;
 }
-​.add-member-form input {
+.add-member-form input {
 flex: 1;
 }
-​.member-chips {
+.member-chips {
 display: flex;
 flex-wrap: wrap;
 gap: 0.6rem;
 }
-​.member-chip {
+.member-chip {
 background-color: var(--bg-input);
 border: 1px solid var(--border-color);
 border-radius: 8px;
@@ -428,17 +428,17 @@ gap: 0.5rem;
 font-size: 0.85rem;
 color: var(--text-main);
 }
-​.member-chip-num {
+.member-chip-num {
 color: var(--gold-primary);
 font-weight: 800;
 font-size: 0.75rem;
 }
-​.chip-actions {
+.chip-actions {
 display: flex;
 gap: 0.2rem;
 margin-left: 0.3rem;
 }
-​.admin-lock-bar {
+.admin-lock-bar {
 display: flex;
 align-items: center;
 justify-content: space-between;
@@ -448,7 +448,7 @@ border-radius: 10px;
 border: 1px solid var(--border-color);
 margin-bottom: 1rem;
 }
-​/* Modal Styles */
+/* Modal Styles */
 .modal-overlay {
 position: fixed;
 top: 0;
@@ -462,7 +462,7 @@ align-items: center;
 justify-content: center;
 z-index: 1000;
 }
-​.modal-card {
+.modal-card {
 background-color: var(--bg-card);
 border: 1px solid var(--border-color);
 border-radius: 16px;
@@ -471,39 +471,39 @@ width: 100%;
 max-width: 400px;
 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
 }
-​.modal-title {
+.modal-title {
 font-size: 1.2rem;
 color: var(--gold-light);
 margin-bottom: 0.5rem;
 }
-​.modal-desc {
+.modal-desc {
 font-size: 0.8rem;
 color: var(--text-muted);
 margin-bottom: 1.25rem;
 }
-​.form-group {
+.form-group {
 margin-bottom: 1rem;
 }
-​.form-group label {
+.form-group label {
 display: block;
 font-size: 0.75rem;
 color: var(--text-muted);
 margin-bottom: 0.3rem;
 text-transform: uppercase;
 }
-​.form-group input {
+.form-group input {
 width: 100%;
 }
-​.table-wrap {
+.table-wrap {
 overflow-x: auto;
 }
-​table {
+table {
 width: 100%;
 border-collapse: collapse;
 text-align: left;
 font-size: 0.85rem;
 }
-​th {
+th {
 background-color: var(--bg-input);
 color: var(--gold-primary);
 font-family: Georgia, serif;
@@ -514,38 +514,38 @@ letter-spacing: 1px;
 padding: 0.85rem 1rem;
 border-bottom: 1px solid var(--border-color);
 }
-​td {
+td {
 padding: 0.85rem 1rem;
 border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 color: var(--text-muted);
 }
-​tr:nth-child(even) {
+tr:nth-child(even) {
 background-color: rgba(255, 255, 255, 0.015);
 }
-​tr.row-selected {
+tr.row-selected {
 background-color: rgba(212, 175, 55, 0.1) !important;
 }
-​tr.row-selected td {
+tr.row-selected td {
 color: var(--text-main);
 font-weight: bold;
 }
-​.tag-pill {
+.tag-pill {
 font-weight: bold;
 padding: 0.25rem 0.6rem;
 border-radius: 6px;
 display: inline-block;
 }
-​.tag-conductor {
+.tag-conductor {
 color: var(--gold-light);
 background-color: rgba(212, 175, 55, 0.12);
 border: 1px solid rgba(212, 175, 55, 0.25);
 }
-​.tag-vip {
+.tag-vip {
 color: var(--red-light);
 background-color: rgba(153, 27, 27, 0.25);
 border: 1px solid rgba(239, 68, 68, 0.3);
 }
-​footer {
+footer {
 border-top: 1px solid var(--border-color);
 padding: 1.5rem;
 text-align: center;
@@ -553,8 +553,8 @@ font-size: 0.75rem;
 color: var(--text-dark);
 background-color: rgba(11, 11, 14, 0.9);
 }
-​.hidden { display: none !important; }
-​@media (max-width: 640px) {
+.hidden { display: none !important; }
+@media (max-width: 640px) {
 .header-container { flex-direction: column; align-items: stretch; }
 .controls-group { justify-content: space-between; }
 .date-banner .date-display { font-size: 1.75rem; }
@@ -566,7 +566,7 @@ background-color: rgba(11, 11, 14, 0.9);
 </style>
 </head>
 <body>
-​<!-- Header -->
+<!-- Header -->
 <header>
 <div class="header-container">
 <div class="logo-area">
@@ -578,7 +578,7 @@ background-color: rgba(11, 11, 14, 0.9);
 <div class="subtitle">Family Operations & Duty Schedule</div>
 </div>
 </div>
-​<div class="controls-group">
+<div class="controls-group">
 <button id="btnPrev" class="btn" title="Previous Day">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
 </button>
@@ -590,16 +590,16 @@ background-color: rgba(11, 11, 14, 0.9);
 </div>
 </div>
 </header>
-​<!-- Main Container -->
+<!-- Main Container -->
 <main>
-​<!-- Date Display Banner -->
+<!-- Date Display Banner -->
 <div class="date-banner">
 <div id="dayNameDisplay" class="day-name">Selected Date</div>
 <div id="dateDisplay" class="date-display">Loading...</div>
 </div>
-​<!-- Duty Cards Grid -->
+<!-- Duty Cards Grid -->
 <div class="cards-grid">
-​<!-- Conductor Card -->
+<!-- Conductor Card -->
 <div class="duty-card conductor">
 <div class="card-watermark">
 <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
@@ -622,7 +622,7 @@ Conductor
 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
 </div>
 </div>
-​<!-- VIP Card -->
+<!-- VIP Card -->
 <div class="duty-card vip">
 <div class="card-watermark">
 <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
@@ -645,8 +645,8 @@ VIP
 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
 </div>
 </div>
-​</div>
-​<!-- Member Shift Finder -->
+</div>
+<!-- Member Shift Finder -->
 <div class="section-block">
 <div class="section-header">
 <div>
@@ -660,7 +660,7 @@ Find My Turn
 <select id="memberSelect"></select>
 </div>
 </div>
-​<div class="finder-grid">
+<div class="finder-grid">
 <div class="result-card conductor-res">
 <div>
 <div class="result-title">Next Conductor Shift</div>
@@ -668,7 +668,7 @@ Find My Turn
 </div>
 <div id="nextConductorDays" class="days-badge">---</div>
 </div>
-​<div class="result-card vip-res">
+<div class="result-card vip-res">
 <div>
 <div class="result-title">Next VIP Shift</div>
 <div id="nextVipDate" class="result-date">---</div>
@@ -677,7 +677,7 @@ Find My Turn
 </div>
 </div>
 </div>
-​<!-- Member Roster Management -->
+<!-- Member Roster Management -->
 <div class="section-block">
 <div class="section-header">
 <div>
@@ -691,16 +691,16 @@ Manage Roster
 <button id="btnAdminToggle" class="btn btn-gold btn-sm">Admin Login</button>
 </div>
 </div>
-​<div id="adminLockNotice" class="admin-lock-bar">
+<div id="adminLockNotice" class="admin-lock-bar">
 <span class="subtitle">🔒 Live Supabase Roster. Log in as Admin to make changes.</span>
 </div>
-​<form id="addMemberForm" class="add-member-form hidden">
+<form id="addMemberForm" class="add-member-form hidden">
 <input type="text" id="newMemberName" class="text-input" placeholder="Enter new member name..." required>
 <button type="submit" class="btn btn-gold">+ Add Member</button>
 </form>
-​<div id="memberChips" class="member-chips"></div>
+<div id="memberChips" class="member-chips"></div>
 </div>
-​<!-- 14-Day Roster Table -->
+<!-- 14-Day Roster Table -->
 <div class="section-block">
 <div class="section-header">
 <div>
@@ -711,7 +711,7 @@ Manage Roster
 <div class="section-desc">Daily breakdown of duties starting from the selected date.</div>
 </div>
 </div>
-​<div class="table-wrap">
+<div class="table-wrap">
 <table>
 <thead>
 <tr>
@@ -726,8 +726,8 @@ Manage Roster
 </table>
 </div>
 </div>
-​</main>
-​<!-- Admin Login Modal -->
+</main>
+<!-- Admin Login Modal -->
 <div id="loginModal" class="modal-overlay hidden">
 <div class="modal-card">
 <h3 class="modal-title">Admin Login</h3>
@@ -748,11 +748,11 @@ Manage Roster
 </form>
 </div>
 </div>
-​<!-- Footer -->
+<!-- Footer -->
 <footer>
 <p>Don's Train Rota • Official Family Operation • 2026</p>
 </footer>
-​<!-- Execution Logic -->
+<!-- Execution Logic -->
 <script>
 (function() {
 var DEFAULT_MEMBERS = [
@@ -765,435 +765,14 @@ var DEFAULT_MEMBERS = [
 "DRiiFT",
 "Tei"
 ];
-​// -----------------------------------------------------------------
-// STEP 1: Replace with your Supabase Project Details
-// -----------------------------------------------------------------
-var SUPABASE_URL = "https://YOUR_PROJECT_ID.supabase.co";
-var SUPABASE_ANON_KEY = "YOUR_ANON_KEY";
-​var supabaseClient = null;
-if (typeof window.supabase !== 'undefined' && SUPABASE_URL.indexOf("YOUR_PROJECT_ID") === -1) {
+// Configured with exact Supabase URL
+var SUPABASE_URL = "https://qvsindceieqaqpjtuxss.supabase.co";
+var SUPABASE_ANON_KEY = "YOUR_PUBLISHABLE_KEY_HERE";
+var supabaseClient = null;
+if (typeof window.supabase !== 'undefined' && SUPABASE_ANON_KEY !== "YOUR_PUBLISHABLE_KEY_HERE") {
 supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 }
-​var MEMBERS = DEFAULT_MEMBERS.slice();
+var MEMBERS = DEFAULT_MEMBERS.slice();
 var currentUser = null;
-​// Anchor Date: Nov 2, 2026 -> Index 0 is Conductor, Index 5 is VIP
-var ANCHOR_YEAR = 2026;
-var ANCHOR_MONTH = 10;
-var ANCHOR_DAY = 2;
-var VIP_OFFSET = 5;
-​var selectedDate = new Date();
-​// -----------------------------------------------------------------
-// SUPABASE DATA SYNCHRONIZATION
-// -----------------------------------------------------------------
-async function fetchRosterFromSupabase() {
-if (!supabaseClient) return;
-try {
-var response = await supabaseClient
-.from('roster')
-.select('name')
-.order('display_order', { ascending: true });
-​if (response.error) {
-console.error("Error fetching roster:", response.error.message);
-return;
-}
-​if (response.data && response.data.length > 0) {
-MEMBERS = response.data.map(function(row) { return row.name; });
-populateSelectOptions();
-renderAll();
-}
-} catch (err) {
-console.error("Database connection failed:", err);
-}
-}
-​async function saveRosterToSupabase() {
-if (!supabaseClient || !currentUser) {
-alert("Authentication required to make database changes.");
-return;
-}
-​try {
-// Wipe and rebuild order
-var delRes = await supabaseClient.from('roster').delete().neq('id', 0);
-if (delRes.error) throw delRes.error;
-​var payload = MEMBERS.map(function(name, idx) {
-return { name: name, display_order: idx + 1 };
-});
-​var insRes = await supabaseClient.from('roster').insert(payload);
-if (insRes.error) throw insRes.error;
-​} catch (err) {
-alert("Failed to update database: " + err.message);
-}
-}
-​// -----------------------------------------------------------------
-// AUTHENTICATION STATE HANDLING
-// -----------------------------------------------------------------
-async function checkAuthSession() {
-if (!supabaseClient) return;
-var sessionRes = await supabaseClient.auth.getSession();
-if (sessionRes.data && sessionRes.data.session) {
-currentUser = sessionRes.data.session.user;
-} else {
-currentUser = null;
-}
-updateAuthUI();
-}
-​function updateAuthUI() {
-var toggleBtn = document.getElementById('btnAdminToggle');
-var addForm = document.getElementById('addMemberForm');
-var lockNotice = document.getElementById('adminLockNotice');
-​if (currentUser) {
-if (toggleBtn) toggleBtn.textContent = "Log Out (" + currentUser.email + ")";
-if (addForm) addForm.classList.remove('hidden');
-if (lockNotice) lockNotice.classList.add('hidden');
-} else {
-if (toggleBtn) toggleBtn.textContent = "Admin Login";
-if (addForm) addForm.classList.add('hidden');
-if (lockNotice) lockNotice.classList.remove('hidden');
-}
-renderMemberChips();
-}
-​async function handleLogin(email, password) {
-if (!supabaseClient) {
-alert("Supabase client is not configured yet. Check SUPABASE_URL and SUPABASE_ANON_KEY.");
-return;
-}
-​var authRes = await supabaseClient.auth.signInWithPassword({
-email: email,
-password: password
-});
-​if (authRes.error) {
-alert("Login failed: " + authRes.error.message);
-} else {
-currentUser = authRes.data.user;
-closeLoginModal();
-updateAuthUI();
-}
-}
-​async function handleLogout() {
-if (!supabaseClient) return;
-await supabaseClient.auth.signOut();
-currentUser = null;
-updateAuthUI();
-}
-​function openLoginModal() {
-document.getElementById('loginModal').classList.remove('hidden');
-}
-​function closeLoginModal() {
-document.getElementById('loginModal').classList.add('hidden');
-document.getElementById('adminEmail').value = '';
-document.getElementById('adminPassword').value = '';
-}
-​// -----------------------------------------------------------------
-// ROTA CALCULATIONS
-// -----------------------------------------------------------------
-function calcDaysDifference(targetDate) {
-var anchorUtc = Date.UTC(ANCHOR_YEAR, ANCHOR_MONTH, ANCHOR_DAY);
-var targetUtc = Date.UTC(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate());
-var diffMs = targetUtc - anchorUtc;
-return Math.floor(diffMs / (1000 * 60 * 60 * 24));
-}
-​function getDuties(dateObj) {
-var N = MEMBERS.length;
-if (N === 0) {
-return { conductor: "None", vip: "None", cIndex: -1, vIndex: -1 };
-}
-​var diffDays = calcDaysDifference(dateObj);
-var conductorIndex = ((diffDays % N) + N) % N;
-var vipIndex = (conductorIndex + (VIP_OFFSET % N)) % N;
-​return {
-conductor: MEMBERS[conductorIndex],
-vip: MEMBERS[vipIndex],
-cIndex: conductorIndex,
-vIndex: vipIndex
-};
-}
-​function formatDateString(d) {
-var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-return months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
-}
-​function getDayNameString(d) {
-var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-return days[d.getDay()];
-}
-​function formatYmdInput(d) {
-var y = d.getFullYear();
-var m = String(d.getMonth() + 1);
-if (m.length < 2) m = '0' + m;
-var day = String(d.getDate());
-if (day.length < 2) day = '0' + day;
-return y + '-' + m + '-' + day;
-}
-​function renderAll() {
-try {
-var crewTagEl = document.getElementById('crewTag');
-if (crewTagEl) {
-crewTagEl.textContent = MEMBERS.length + " Mobster" + (MEMBERS.length === 1 ? "" : "s");
-}
-​var dayNameEl = document.getElementById('dayNameDisplay');
-var dateDisplayEl = document.getElementById('dateDisplay');
-var dateInputEl = document.getElementById('dateInput');
-​if (dayNameEl) dayNameEl.textContent = getDayNameString(selectedDate);
-if (dateDisplayEl) dateDisplayEl.textContent = formatDateString(selectedDate);
-if (dateInputEl) dateInputEl.value = formatYmdInput(selectedDate);
-​var duties = getDuties(selectedDate);
-var condNameEl = document.getElementById('conductorName');
-var vipNameEl = document.getElementById('vipName');
-​if (condNameEl) condNameEl.textContent = duties.conductor;
-if (vipNameEl) vipNameEl.textContent = duties.vip;
-​renderMemberChips();
-renderScheduleTable();
-renderMemberLookup();
-} catch (e) {
-console.error("Error updating UI: ", e);
-}
-}
-​function renderMemberChips() {
-var container = document.getElementById('memberChips');
-if (!container) return;
-​container.innerHTML = '';
-​MEMBERS.forEach(function(member, index) {
-var chip = document.createElement('div');
-chip.className = 'member-chip';
-​var num = document.createElement('span');
-num.className = 'member-chip-num';
-num.textContent = '#' + (index + 1);
-​var nameSpan = document.createElement('span');
-nameSpan.textContent = member;
-​chip.appendChild(num);
-chip.appendChild(nameSpan);
-​if (currentUser) {
-var actions = document.createElement('div');
-actions.className = 'chip-actions';
-​var upBtn = document.createElement('button');
-upBtn.className = 'btn btn-sm';
-upBtn.type = 'button';
-upBtn.innerHTML = '▲';
-upBtn.title = 'Move Up';
-upBtn.disabled = index === 0;
-upBtn.onclick = function() { moveMember(index, index - 1); };
-​var downBtn = document.createElement('button');
-downBtn.className = 'btn btn-sm';
-downBtn.type = 'button';
-downBtn.innerHTML = '▼';
-downBtn.title = 'Move Down';
-downBtn.disabled = index === MEMBERS.length - 1;
-downBtn.onclick = function() { moveMember(index, index + 1); };
-​var removeBtn = document.createElement('button');
-removeBtn.className = 'btn btn-sm btn-danger';
-removeBtn.type = 'button';
-removeBtn.innerHTML = '×';
-removeBtn.title = 'Remove Member';
-removeBtn.onclick = function() { removeMember(index); };
-​actions.appendChild(upBtn);
-actions.appendChild(downBtn);
-actions.appendChild(removeBtn);
-chip.appendChild(actions);
-}
-​container.appendChild(chip);
-});
-}
-​function moveMember(fromIdx, toIdx) {
-if (!currentUser) return;
-if (toIdx < 0 || toIdx >= MEMBERS.length) return;
-var item = MEMBERS.splice(fromIdx, 1)[0];
-MEMBERS.splice(toIdx, 0, item);
-populateSelectOptions();
-renderAll();
-saveRosterToSupabase();
-}
-​function addMember(name) {
-if (!currentUser) return;
-var trimmed = name.trim();
-if (!trimmed) return;
-​if (MEMBERS.indexOf(trimmed) !== -1) {
-alert("Member '" + trimmed + "' is already in the roster.");
-return;
-}
-​MEMBERS.push(trimmed);
-populateSelectOptions();
-renderAll();
-saveRosterToSupabase();
-}
-​function removeMember(index) {
-if (!currentUser) return;
-if (MEMBERS.length <= 1) {
-alert("You must keep at least one member in the roster.");
-return;
-}
-var removed = MEMBERS[index];
-if (confirm("Remove '" + removed + "' from the train rota?")) {
-MEMBERS.splice(index, 1);
-populateSelectOptions();
-renderAll();
-saveRosterToSupabase();
-}
-}
-​function renderScheduleTable() {
-var tbody = document.getElementById('scheduleTableBody');
-if (!tbody) return;
-​tbody.innerHTML = '';
-​for (var i = 0; i < 14; i++) {
-var rowDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate() + i);
-var rowDuties = getDuties(rowDate);
-var isCurrent = (i === 0);
-​var tr = document.createElement('tr');
-if (isCurrent) tr.className = 'row-selected';
-​var daysShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-​tr.innerHTML = '<td>' + formatDateString(rowDate) + (isCurrent ? ' <span class="crew-tag" style="font-size:0.55rem; padding:0.1rem 0.3rem;">Selected</span>' : '') + '</td>' +
-'<td>' + daysShort[rowDate.getDay()] + '</td>' +
-'<td><span class="tag-pill tag-conductor">' + rowDuties.conductor + '</span></td>' +
-'<td><span class="tag-pill tag-vip">' + rowDuties.vip + '</span></td>';
-​tbody.appendChild(tr);
-}
-}
-​function populateSelectOptions() {
-var select = document.getElementById('memberSelect');
-if (!select) return;
-​var previousValue = select.value;
-select.innerHTML = '';
-​if (MEMBERS.length === 0) {
-var opt = document.createElement('option');
-opt.value = "";
-opt.textContent = "-- No Members --";
-select.appendChild(opt);
-return;
-}
-​for (var i = 0; i < MEMBERS.length; i++) {
-var opt = document.createElement('option');
-opt.value = MEMBERS[i];
-opt.textContent = MEMBERS[i];
-select.appendChild(opt);
-}
-​if (MEMBERS.indexOf(previousValue) !== -1) {
-select.value = previousValue;
-} else {
-select.value = MEMBERS[0];
-}
-}
-​function renderMemberLookup() {
-var select = document.getElementById('memberSelect');
-if (!select) return;
-​var name = select.value;
-var targetIdx = -1;
-for (var i = 0; i < MEMBERS.length; i++) {
-if (MEMBERS[i] === name) {
-targetIdx = i;
-break;
-}
-}
-​var cDateEl = document.getElementById('nextConductorDate');
-var cDaysEl = document.getElementById('nextConductorDays');
-var vDateEl = document.getElementById('nextVipDate');
-var vDaysEl = document.getElementById('nextVipDays');
-​if (targetIdx === -1 || MEMBERS.length === 0) {
-if (cDateEl) cDateEl.textContent = '---';
-if (cDaysEl) cDaysEl.textContent = '---';
-if (vDateEl) vDateEl.textContent = '---';
-if (vDaysEl) vDaysEl.textContent = '---';
-return;
-}
-​var curDuties = getDuties(selectedDate);
-var N = MEMBERS.length;
-​var cDiff = (targetIdx - curDuties.cIndex) % N;
-if (cDiff < 0) cDiff += N;
-​var vDiff = (targetIdx - curDuties.vIndex) % N;
-if (vDiff < 0) vDiff += N;
-​var nextCDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate() + cDiff);
-var nextVDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate() + vDiff);
-​if (cDateEl) cDateEl.textContent = formatDateString(nextCDate);
-if (cDaysEl) cDaysEl.textContent = cDiff === 0 ? "Today!" : "In " + cDiff + " day" + (cDiff > 1 ? "s" : "");
-​if (vDateEl) vDateEl.textContent = formatDateString(nextVDate);
-if (vDaysEl) vDaysEl.textContent = vDiff === 0 ? "Today!" : "In " + vDiff + " day" + (vDiff > 1 ? "s" : "");
-}
-​function bindEvents() {
-var btnPrev = document.getElementById('btnPrev');
-if (btnPrev) {
-btnPrev.onclick = function() {
-selectedDate.setDate(selectedDate.getDate() - 1);
-renderAll();
-};
-}
-​var btnNext = document.getElementById('btnNext');
-if (btnNext) {
-btnNext.onclick = function() {
-selectedDate.setDate(selectedDate.getDate() + 1);
-renderAll();
-};
-}
-​var btnToday = document.getElementById('btnToday');
-if (btnToday) {
-btnToday.onclick = function() {
-selectedDate = new Date();
-renderAll();
-};
-}
-​var dateInput = document.getElementById('dateInput');
-if (dateInput) {
-dateInput.onchange = function(e) {
-if (e.target.value) {
-var parts = e.target.value.split('-');
-selectedDate = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
-renderAll();
-}
-};
-}
-​var memberSelect = document.getElementById('memberSelect');
-if (memberSelect) {
-memberSelect.onchange = function() {
-renderMemberLookup();
-};
-}
-​var addForm = document.getElementById('addMemberForm');
-if (addForm) {
-addForm.onsubmit = function(e) {
-e.preventDefault();
-var input = document.getElementById('newMemberName');
-if (input && input.value) {
-addMember(input.value);
-input.value = '';
-}
-};
-}
-​var adminToggleBtn = document.getElementById('btnAdminToggle');
-if (adminToggleBtn) {
-adminToggleBtn.onclick = function() {
-if (currentUser) {
-handleLogout();
-} else {
-openLoginModal();
-}
-};
-}
-​var loginForm = document.getElementById('loginForm');
-if (loginForm) {
-loginForm.onsubmit = function(e) {
-e.preventDefault();
-var email = document.getElementById('adminEmail').value;
-var pass = document.getElementById('adminPassword').value;
-handleLogin(email, pass);
-};
-}
-​var cancelLoginBtn = document.getElementById('btnCancelLogin');
-if (cancelLoginBtn) {
-cancelLoginBtn.onclick = closeLoginModal;
-}
-}
-​async function initApp() {
-try {
-populateSelectOptions();
-bindEvents();
-renderAll();
-await checkAuthSession();
-await fetchRosterFromSupabase();
-} catch(err) {
-console.error("Init Error: ", err);
-}
-}
-​if (document.readyState === 'loading') {
-document.addEventListener('DOMContentLoaded', initApp);
-} else {
-initApp();
-}
-})();
-</script>
-</body>
-</html>
+// Anchor Date: Nov 2, 2026 -> Index 0 is Conductor, Index 5 is VIP
+var
