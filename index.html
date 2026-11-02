@@ -765,15 +765,13 @@ var DEFAULT_MEMBERS = [
 "DRiiFT",
 "Tei"
 ];
-// Configured with exact Supabase URL
+// Configured with exact Supabase URL and Publishable Key
 var SUPABASE_URL = "https://qvsindceieqaqpjtuxss.supabase.co";
-var SUPABASE_ANON_KEY = "sb_publishable_WcF3zkkFODuR58urvvq15w_O-kqjKW0";
+var SUPABASE_ANON_KEY = "sb_publishable_WcF3zkKFODuR58urvvq15w_O-kqjKW0";
 var supabaseClient = null;
 if (typeof window.supabase !== 'undefined' && SUPABASE_ANON_KEY !== "YOUR_PUBLISHABLE_KEY_HERE") {
-
 supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 }
 var MEMBERS = DEFAULT_MEMBERS.slice();
 var currentUser = null;
-// Anchor Date: Nov 2, 2026 -> Index 0 is Conductor, Index 5 is VIP
-var
+// Anchor Date: Nov 2, 2026 ->
