@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Don's Train Rota</title>
-<!-- Supabase JS Client library for live database queries -->
+<!-- Supabase JS Client library -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root {
@@ -43,8 +43,7 @@ justify-content: space-between;
 font-family: Georgia, "Times New Roman", Times, serif;
 letter-spacing: 1px;
 }
-​/* Top Header Navigation */
-header {
+​header {
 background: linear-gradient(180deg, #181820 0%, #0d0d11 100%);
 border-bottom: 2px solid var(--border-color);
 position: sticky;
@@ -106,8 +105,7 @@ font-family: sans-serif;
 font-size: 0.75rem;
 color: var(--text-muted);
 }
-​/* Controls Area */
-.controls-group {
+​.controls-group {
 display: flex;
 align-items: center;
 gap: 0.4rem;
@@ -177,8 +175,7 @@ font-family: inherit;
 filter: invert(0.8) sepia(1) saturate(5) hue-rotate(5deg);
 cursor: pointer;
 }
-​/* Container Layout */
-main {
+​main {
 max-width: 1100px;
 margin: 0 auto;
 padding: 2rem 1.25rem;
@@ -187,8 +184,7 @@ display: flex;
 flex-direction: column;
 gap: 1.75rem;
 }
-​/* Banner Date Display */
-.date-banner {
+​.date-banner {
 text-align: center;
 padding: 1.25rem;
 background: linear-gradient(180deg, rgba(21, 21, 28, 0.8) 0%, rgba(11, 11, 14, 0.4) 100%);
@@ -211,8 +207,7 @@ font-family: Georgia, serif;
 text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 margin-top: 0.2rem;
 }
-​/* Cards Grid */
-.cards-grid {
+​.cards-grid {
 display: grid;
 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 gap: 1.5rem;
@@ -318,8 +313,7 @@ width: 180px;
 height: 180px;
 fill: white;
 }
-​/* Standard Section Blocks */
-.section-block {
+​.section-block {
 background-color: var(--bg-card);
 border-radius: 18px;
 padding: 1.5rem;
@@ -353,8 +347,7 @@ font-size: 0.8rem;
 color: var(--text-muted);
 margin-top: 0.2rem;
 }
-​/* Finder Section */
-.select-wrapper select {
+​.select-wrapper select {
 background-color: var(--bg-input);
 color: var(--gold-light);
 border: 1px solid var(--border-color);
@@ -411,8 +404,7 @@ background-color: rgba(212, 175, 55, 0.1);
 color: var(--gold-light);
 border: 1px solid rgba(212, 175, 55, 0.2);
 }
-​/* Member Management Section */
-.add-member-form {
+​.add-member-form {
 display: flex;
 gap: 0.5rem;
 margin-bottom: 1.25rem;
@@ -456,8 +448,53 @@ border-radius: 10px;
 border: 1px solid var(--border-color);
 margin-bottom: 1rem;
 }
-​/* Table */
-.table-wrap {
+​/* Modal Styles */
+.modal-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh;
+background: rgba(0, 0, 0, 0.85);
+backdrop-filter: blur(4px);
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 1000;
+}
+​.modal-card {
+background-color: var(--bg-card);
+border: 1px solid var(--border-color);
+border-radius: 16px;
+padding: 2rem;
+width: 100%;
+max-width: 400px;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+​.modal-title {
+font-size: 1.2rem;
+color: var(--gold-light);
+margin-bottom: 0.5rem;
+}
+​.modal-desc {
+font-size: 0.8rem;
+color: var(--text-muted);
+margin-bottom: 1.25rem;
+}
+​.form-group {
+margin-bottom: 1rem;
+}
+​.form-group label {
+display: block;
+font-size: 0.75rem;
+color: var(--text-muted);
+margin-bottom: 0.3rem;
+text-transform: uppercase;
+}
+​.form-group input {
+width: 100%;
+}
+​.table-wrap {
 overflow-x: auto;
 }
 ​table {
@@ -648,15 +685,14 @@ Find My Turn
 <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
 Manage Roster
 </div>
-<div class="section-desc">View or edit the family rotation list. Admin Key required to save changes.</div>
+<div class="section-desc">View or edit the family rotation list. Admin Login required.</div>
 </div>
 <div>
-<button id="btnAdminToggle" class="btn btn-gold btn-sm">Unlock Admin Edit Mode</button>
-<button id="btnResetRoster" class="btn btn-sm hidden" title="Reset roster to default list">Reset Roster</button>
+<button id="btnAdminToggle" class="btn btn-gold btn-sm">Admin Login</button>
 </div>
 </div>
 ​<div id="adminLockNotice" class="admin-lock-bar">
-<span class="subtitle">🔒 Admin Editing Mode is <strong>Locked</strong>. Enter your Admin Key to make roster changes.</span>
+<span class="subtitle">🔒 Live Supabase Roster. Log in as Admin to make changes.</span>
 </div>
 ​<form id="addMemberForm" class="add-member-form hidden">
 <input type="text" id="newMemberName" class="text-input" placeholder="Enter new member name..." required>
@@ -691,6 +727,27 @@ Manage Roster
 </div>
 </div>
 ​</main>
+​<!-- Admin Login Modal -->
+<div id="loginModal" class="modal-overlay hidden">
+<div class="modal-card">
+<h3 class="modal-title">Admin Login</h3>
+<p class="modal-desc">Sign in with your Supabase admin credentials to modify the live roster.</p>
+<form id="loginForm">
+<div class="form-group">
+<label for="adminEmail">Email</label>
+<input type="email" id="adminEmail" class="text-input" placeholder="admin@example.com" required>
+</div>
+<div class="form-group">
+<label for="adminPassword">Password</label>
+<input type="password" id="adminPassword" class="text-input" placeholder="••••••••" required>
+</div>
+<div style="display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1.5rem;">
+<button type="button" id="btnCancelLogin" class="btn">Cancel</button>
+<button type="submit" class="btn btn-gold">Log In</button>
+</div>
+</form>
+</div>
+</div>
 ​<!-- Footer -->
 <footer>
 <p>Don's Train Rota • Official Family Operation • 2026</p>
@@ -698,7 +755,6 @@ Manage Roster
 ​<!-- Execution Logic -->
 <script>
 (function() {
-// Updated default list (Dasning and Viola removed)
 var DEFAULT_MEMBERS = [
 "Waltz",
 "ChangeMe",
@@ -709,75 +765,127 @@ var DEFAULT_MEMBERS = [
 "DRiiFT",
 "Tei"
 ];
-​// Configuration for Supabase Backend (Replace with your database credentials)
-var SUPABASE_URL = "https://YOUR_SUPABASE_PROJECT_ID.supabase.co";
-var SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
-​var ADMIN_PASSWORD = "change_this_admin_password"; // Set your secret admin key here
+​// -----------------------------------------------------------------
+// STEP 1: Replace with your Supabase Project Details
+// -----------------------------------------------------------------
+var SUPABASE_URL = "https://YOUR_PROJECT_ID.supabase.co";
+var SUPABASE_ANON_KEY = "YOUR_ANON_KEY";
 ​var supabaseClient = null;
-if (typeof window.supabase !== 'undefined' && SUPABASE_URL.indexOf("YOUR_SUPABASE_PROJECT_ID") === -1) {
+if (typeof window.supabase !== 'undefined' && SUPABASE_URL.indexOf("YOUR_PROJECT_ID") === -1) {
 supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 }
-​var STORAGE_KEY = "dons_train_rota_members";
-var isAdminLoggedIn = false;
-​function loadLocalMembers() {
-try {
-var stored = localStorage.getItem(STORAGE_KEY);
-if (stored) {
-var parsed = JSON.parse(stored);
-if (Array.isArray(parsed) && parsed.length > 0) {
-return parsed;
-}
-}
-} catch (e) {
-console.warn("Could not load stored roster, using defaults", e);
-}
-return DEFAULT_MEMBERS.slice();
-}
-​function saveLocalMembers(membersList) {
-try {
-localStorage.setItem(STORAGE_KEY, JSON.stringify(membersList));
-} catch (e) {
-console.warn("Could not save roster to local storage", e);
-}
-}
-​var MEMBERS = loadLocalMembers();
+​var MEMBERS = DEFAULT_MEMBERS.slice();
+var currentUser = null;
 ​// Anchor Date: Nov 2, 2026 -> Index 0 is Conductor, Index 5 is VIP
 var ANCHOR_YEAR = 2026;
-var ANCHOR_MONTH = 10; // 0-indexed November
+var ANCHOR_MONTH = 10;
 var ANCHOR_DAY = 2;
 var VIP_OFFSET = 5;
 ​var selectedDate = new Date();
-​async function syncFromCloudDatabase() {
+​// -----------------------------------------------------------------
+// SUPABASE DATA SYNCHRONIZATION
+// -----------------------------------------------------------------
+async function fetchRosterFromSupabase() {
 if (!supabaseClient) return;
 try {
 var response = await supabaseClient
 .from('roster')
 .select('name')
 .order('display_order', { ascending: true });
+​if (response.error) {
+console.error("Error fetching roster:", response.error.message);
+return;
+}
 ​if (response.data && response.data.length > 0) {
 MEMBERS = response.data.map(function(row) { return row.name; });
-saveLocalMembers(MEMBERS);
 populateSelectOptions();
 renderAll();
 }
 } catch (err) {
-console.error("Cloud database sync error: ", err);
+console.error("Database connection failed:", err);
 }
 }
-​async function syncToCloudDatabase() {
-if (!supabaseClient) return;
-try {
-// Refresh table with updated roster order
-await supabaseClient.from('roster').delete().neq('id', 0);
-var payload = MEMBERS.map(function(name, idx) {
+​async function saveRosterToSupabase() {
+if (!supabaseClient || !currentUser) {
+alert("Authentication required to make database changes.");
+return;
+}
+​try {
+// Wipe and rebuild order
+var delRes = await supabaseClient.from('roster').delete().neq('id', 0);
+if (delRes.error) throw delRes.error;
+​var payload = MEMBERS.map(function(name, idx) {
 return { name: name, display_order: idx + 1 };
 });
-await supabaseClient.from('roster').insert(payload);
-} catch (err) {
-console.error("Error saving roster to database: ", err);
+​var insRes = await supabaseClient.from('roster').insert(payload);
+if (insRes.error) throw insRes.error;
+​} catch (err) {
+alert("Failed to update database: " + err.message);
 }
 }
-​function calcDaysDifference(targetDate) {
+​// -----------------------------------------------------------------
+// AUTHENTICATION STATE HANDLING
+// -----------------------------------------------------------------
+async function checkAuthSession() {
+if (!supabaseClient) return;
+var sessionRes = await supabaseClient.auth.getSession();
+if (sessionRes.data && sessionRes.data.session) {
+currentUser = sessionRes.data.session.user;
+} else {
+currentUser = null;
+}
+updateAuthUI();
+}
+​function updateAuthUI() {
+var toggleBtn = document.getElementById('btnAdminToggle');
+var addForm = document.getElementById('addMemberForm');
+var lockNotice = document.getElementById('adminLockNotice');
+​if (currentUser) {
+if (toggleBtn) toggleBtn.textContent = "Log Out (" + currentUser.email + ")";
+if (addForm) addForm.classList.remove('hidden');
+if (lockNotice) lockNotice.classList.add('hidden');
+} else {
+if (toggleBtn) toggleBtn.textContent = "Admin Login";
+if (addForm) addForm.classList.add('hidden');
+if (lockNotice) lockNotice.classList.remove('hidden');
+}
+renderMemberChips();
+}
+​async function handleLogin(email, password) {
+if (!supabaseClient) {
+alert("Supabase client is not configured yet. Check SUPABASE_URL and SUPABASE_ANON_KEY.");
+return;
+}
+​var authRes = await supabaseClient.auth.signInWithPassword({
+email: email,
+password: password
+});
+​if (authRes.error) {
+alert("Login failed: " + authRes.error.message);
+} else {
+currentUser = authRes.data.user;
+closeLoginModal();
+updateAuthUI();
+}
+}
+​async function handleLogout() {
+if (!supabaseClient) return;
+await supabaseClient.auth.signOut();
+currentUser = null;
+updateAuthUI();
+}
+​function openLoginModal() {
+document.getElementById('loginModal').classList.remove('hidden');
+}
+​function closeLoginModal() {
+document.getElementById('loginModal').classList.add('hidden');
+document.getElementById('adminEmail').value = '';
+document.getElementById('adminPassword').value = '';
+}
+​// -----------------------------------------------------------------
+// ROTA CALCULATIONS
+// -----------------------------------------------------------------
+function calcDaysDifference(targetDate) {
 var anchorUtc = Date.UTC(ANCHOR_YEAR, ANCHOR_MONTH, ANCHOR_DAY);
 var targetUtc = Date.UTC(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate());
 var diffMs = targetUtc - anchorUtc;
@@ -852,7 +960,7 @@ num.textContent = '#' + (index + 1);
 nameSpan.textContent = member;
 ​chip.appendChild(num);
 chip.appendChild(nameSpan);
-​if (isAdminLoggedIn) {
+​if (currentUser) {
 var actions = document.createElement('div');
 actions.className = 'chip-actions';
 ​var upBtn = document.createElement('button');
@@ -884,17 +992,16 @@ chip.appendChild(actions);
 });
 }
 ​function moveMember(fromIdx, toIdx) {
-if (!isAdminLoggedIn) return;
+if (!currentUser) return;
 if (toIdx < 0 || toIdx >= MEMBERS.length) return;
 var item = MEMBERS.splice(fromIdx, 1)[0];
 MEMBERS.splice(toIdx, 0, item);
-saveLocalMembers(MEMBERS);
-syncToCloudDatabase();
 populateSelectOptions();
 renderAll();
+saveRosterToSupabase();
 }
 ​function addMember(name) {
-if (!isAdminLoggedIn) return;
+if (!currentUser) return;
 var trimmed = name.trim();
 if (!trimmed) return;
 ​if (MEMBERS.indexOf(trimmed) !== -1) {
@@ -902,13 +1009,12 @@ alert("Member '" + trimmed + "' is already in the roster.");
 return;
 }
 ​MEMBERS.push(trimmed);
-saveLocalMembers(MEMBERS);
-syncToCloudDatabase();
 populateSelectOptions();
 renderAll();
+saveRosterToSupabase();
 }
 ​function removeMember(index) {
-if (!isAdminLoggedIn) return;
+if (!currentUser) return;
 if (MEMBERS.length <= 1) {
 alert("You must keep at least one member in the roster.");
 return;
@@ -916,42 +1022,9 @@ return;
 var removed = MEMBERS[index];
 if (confirm("Remove '" + removed + "' from the train rota?")) {
 MEMBERS.splice(index, 1);
-saveLocalMembers(MEMBERS);
-syncToCloudDatabase();
 populateSelectOptions();
 renderAll();
-}
-}
-​function resetRoster() {
-if (!isAdminLoggedIn) return;
-if (confirm("Reset the roster back to the original default member list?")) {
-MEMBERS = DEFAULT_MEMBERS.slice();
-saveLocalMembers(MEMBERS);
-syncToCloudDatabase();
-populateSelectOptions();
-renderAll();
-}
-}
-​function toggleAdminMode() {
-if (isAdminLoggedIn) {
-isAdminLoggedIn = false;
-document.getElementById('btnAdminToggle').textContent = "Unlock Admin Edit Mode";
-document.getElementById('addMemberForm').classList.add('hidden');
-document.getElementById('btnResetRoster').classList.add('hidden');
-document.getElementById('adminLockNotice').classList.remove('hidden');
-renderAll();
-} else {
-var pass = prompt("Enter the Admin Key to unlock editing:");
-if (pass === ADMIN_PASSWORD) {
-isAdminLoggedIn = true;
-document.getElementById('btnAdminToggle').textContent = "🔒 Lock Admin Mode";
-document.getElementById('addMemberForm').classList.remove('hidden');
-document.getElementById('btnResetRoster').classList.remove('hidden');
-document.getElementById('adminLockNotice').classList.add('hidden');
-renderAll();
-} else if (pass !== null) {
-alert("Incorrect Admin Key.");
-}
+saveRosterToSupabase();
 }
 }
 ​function renderScheduleTable() {
@@ -1080,25 +1153,37 @@ input.value = '';
 }
 };
 }
-​var resetBtn = document.getElementById('btnResetRoster');
-if (resetBtn) {
-resetBtn.onclick = function() {
-resetRoster();
-};
-}
 ​var adminToggleBtn = document.getElementById('btnAdminToggle');
 if (adminToggleBtn) {
 adminToggleBtn.onclick = function() {
-toggleAdminMode();
+if (currentUser) {
+handleLogout();
+} else {
+openLoginModal();
+}
 };
 }
+​var loginForm = document.getElementById('loginForm');
+if (loginForm) {
+loginForm.onsubmit = function(e) {
+e.preventDefault();
+var email = document.getElementById('adminEmail').value;
+var pass = document.getElementById('adminPassword').value;
+handleLogin(email, pass);
+};
 }
-​function initApp() {
+​var cancelLoginBtn = document.getElementById('btnCancelLogin');
+if (cancelLoginBtn) {
+cancelLoginBtn.onclick = closeLoginModal;
+}
+}
+​async function initApp() {
 try {
 populateSelectOptions();
 bindEvents();
 renderAll();
-syncFromCloudDatabase();
+await checkAuthSession();
+await fetchRosterFromSupabase();
 } catch(err) {
 console.error("Init Error: ", err);
 }
