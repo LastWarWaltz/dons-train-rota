@@ -40,7 +40,6 @@
             justify-content: space-between;
         }
 
-        /* Typography Headers */
         h1, h2, h3, .brand-title, .role-badge {
             font-family: Georgia, "Times New Roman", Times, serif;
             letter-spacing: 1px;
@@ -450,7 +449,7 @@
             border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
-        /* 14-Day Schedule Table */
+        /* Table */
         .table-wrap {
             overflow-x: auto;
         }
@@ -512,7 +511,7 @@
             border: 1px solid rgba(239, 68, 68, 0.3);
         }
 
-        /* Guide Accordion */
+        /* Hosting Instructions Guide */
         .guide-box {
             background: linear-gradient(135deg, rgba(21, 21, 28, 0.95), rgba(11, 11, 14, 0.98));
             border: 1px solid var(--border-color);
@@ -601,7 +600,7 @@
                     <svg viewBox="0 0 24 24"><path d="M12 2c-4 0-8 .5-8 4v9.5C4 17.43 5.57 19 7.5 19L6 20.5v.5h12v-.5L16.5 19c1.93 0 3.5-1.57 3.5-3.5V6c0-3.5-4-4-8-4zm0 2c3.71 0 5.83.42 6 2H6c.17-1.58 2.29-2 6-2zm6 11.5c0 .83-.67 1.5-1.5 1.5h-9C6.67 17 6 16.33 6 15.5V9h12v6.5zM8.5 11C7.67 11 7 11.67 7 12.5S7.67 14 8.5 14s1.5-.67 1.5-1.5S9.33 11 8.5 11zm7 0c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/></svg>
                 </div>
                 <div>
-                    <div class="brand-title">Don's Train Rota <span class="crew-tag">10 Mobsters</span></div>
+                    <div class="brand-title">Don's Train Rota <span class="crew-tag">Family Roster • 10 Mobsters</span></div>
                     <div class="subtitle">Family Operations & Duty Schedule</div>
                 </div>
             </div>
@@ -666,7 +665,7 @@
                             <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                             VIP
                         </span>
-                        <span class="role-desc">Made Man Escort</span>
+                        <span class="role-desc">Made Man</span>
                     </div>
                     <div>
                         <div class="member-label">VIP Duty</div>
@@ -687,7 +686,7 @@
                 <div>
                     <div class="section-title">
                         <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                        Find My Duty Shift
+                        Find My Turn
                     </div>
                     <div class="section-desc">Select a member to check their next scheduled duties.</div>
                 </div>
@@ -721,9 +720,9 @@
                 <div>
                     <div class="section-title">
                         <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
-                        14-Day Operation Schedule
+                        14-Day Schedule Table
                     </div>
-                    <div class="section-desc">Daily breakdown of duties starting around the selected date.</div>
+                    <div class="section-desc">Daily breakdown of duties starting from the selected date.</div>
                 </div>
             </div>
 
@@ -743,44 +742,6 @@
             </div>
         </div>
 
-        <!-- Free Hosting Guide -->
-        <div class="guide-box">
-            <div class="guide-header" id="guideToggle">
-                <div>
-                    <div class="section-title">
-                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        Share With The Squad (Free Hosting)
-                    </div>
-                    <div class="section-desc">Host this app for free online so friends can access it on any mobile device.</div>
-                </div>
-                <button class="btn" style="background: rgba(212, 175, 55, 0.1); border-color: var(--border-color);">
-                    <span id="guideToggleText" style="color: var(--gold-light);">Show Instructions</span>
-                </button>
-            </div>
-
-            <div id="guideBody" class="guide-content hidden">
-                <div class="step-card">
-                    <h4>Option 1: Netlify Drop (Fastest - 30 Seconds)</h4>
-                    <ol>
-                        <li>Save this file on your computer as <code>index.html</code>.</li>
-                        <li>Open <a href="https://app.netlify.com/drop" target="_blank" style="color:var(--gold-light);">app.netlify.com/drop</a> in your browser.</li>
-                        <li>Drag and drop the folder containing your <code>index.html</code>.</li>
-                        <li>Netlify gives you a free live URL to share with the squad!</li>
-                    </ol>
-                </div>
-
-                <div class="step-card">
-                    <h4>Option 2: GitHub Pages (Permanent)</h4>
-                    <ol>
-                        <li>Create a free account on <a href="https://github.com" target="_blank" style="color:var(--gold-light);">GitHub.com</a>.</li>
-                        <li>Create a new public repository (e.g. <code>dons-train-rota</code>).</li>
-                        <li>Upload your <code>index.html</code> file to the repository.</li>
-                        <li>Go to Settings &rarr; Pages, select <code>main</code> branch, and save.</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
     </main>
 
     <!-- Footer -->
@@ -790,9 +751,7 @@
 
     <!-- Execution Logic -->
     <script>
-        // Wrap everything in a self-contained execution scope
         (function() {
-            // 10 MEMBER ROSTER (Husi removed)
             var MEMBERS = [
                 "Waltz",
                 "ChangeMe",
@@ -810,7 +769,7 @@
             var ANCHOR_YEAR = 2026;
             var ANCHOR_MONTH = 10; // 0-indexed November
             var ANCHOR_DAY = 2;
-            var VIP_OFFSET = 5; // Math.floor(10 / 2)
+            var VIP_OFFSET = 5;
 
             var selectedDate = new Date();
 
@@ -857,7 +816,6 @@
 
             function renderAll() {
                 try {
-                    // Update Main Banner Displays
                     var dayNameEl = document.getElementById('dayNameDisplay');
                     var dateDisplayEl = document.getElementById('dateDisplay');
                     var dateInputEl = document.getElementById('dateInput');
@@ -866,7 +824,6 @@
                     if (dateDisplayEl) dateDisplayEl.textContent = formatDateString(selectedDate);
                     if (dateInputEl) dateInputEl.value = formatYmdInput(selectedDate);
 
-                    // Update Duty Cards
                     var duties = getDuties(selectedDate);
                     var condNameEl = document.getElementById('conductorName');
                     var vipNameEl = document.getElementById('vipName');
@@ -874,10 +831,7 @@
                     if (condNameEl) condNameEl.textContent = duties.conductor;
                     if (vipNameEl) vipNameEl.textContent = duties.vip;
 
-                    // Update Schedule Table
                     renderScheduleTable();
-
-                    // Update Member Lookup
                     renderMemberLookup();
                 } catch (e) {
                     console.error("Error updating UI: ", e);
@@ -890,7 +844,7 @@
 
                 tbody.innerHTML = '';
 
-                for (var i = -3; i <= 10; i++) {
+                for (var i = 0; i < 14; i++) {
                     var rowDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate() + i);
                     var rowDuties = getDuties(rowDate);
                     var isCurrent = (i === 0);
@@ -957,7 +911,7 @@
                 if (cDateEl) cDateEl.textContent = formatDateString(nextCDate);
                 if (cDaysEl) cDaysEl.textContent = cDiff === 0 ? "Today!" : "In " + cDiff + " day" + (cDiff > 1 ? "s" : "");
 
-                if (vDateEl) vDateEl.textContent = formatDateString(nextVDate);
+                if (vDateEl) vDateEl.textContent = formatDateString(nextVVDate || nextVDate);
                 if (vDaysEl) vDaysEl.textContent = vDiff === 0 ? "Today!" : "In " + vDiff + " day" + (vDiff > 1 ? "s" : "");
             }
 
@@ -1003,21 +957,6 @@
                         renderMemberLookup();
                     };
                 }
-
-                var guideToggle = document.getElementById('guideToggle');
-                if (guideToggle) {
-                    guideToggle.onclick = function() {
-                        var body = document.getElementById('guideBody');
-                        var txt = document.getElementById('guideToggleText');
-                        if (body.classList.contains('hidden')) {
-                            body.classList.remove('hidden');
-                            if (txt) txt.textContent = "Hide Instructions";
-                        } else {
-                            body.classList.add('hidden');
-                            if (txt) txt.textContent = "Show Instructions";
-                        }
-                    };
-                }
             }
 
             function initApp() {
@@ -1030,15 +969,11 @@
                 }
             }
 
-            // Execute immediately upon script parsing
-            initApp();
-
-            // Also attach event listeners as fallback guarantee
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', initApp);
+            } else {
+                initApp();
             }
-            window.onload = initApp;
-
         })();
     </script>
 </body>
