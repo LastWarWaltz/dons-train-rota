@@ -777,4 +777,416 @@ var ANCHOR_YEAR = 2026;
 var ANCHOR_MONTH = 10;
 var ANCHOR_DAY = 2;
 var VIP_OFFSET = 5;
-var selectedDate = new Date
+var selectedDate = new Date();
+async function fetchRosterFromSupabase() {
+if (!supabaseClient) {
+populateSelectOptions();
+renderAll();
+return;
+}
+try {
+var response = await supabaseClient
+.from('roster')
+.select('name')
+.order('display_order', { ascending: true });
+if (response.error) {
+console.error("Error fetching roster:", response.error.message);
+MEMBERS = DEFAULT_MEMBERS.slice();
+} else if (response.data && response.data.length > 0) {
+MEMBERS = response.data.map(function(row) { return row.name; });
+} else {
+MEMBERS = DEFAULT_MEMBERS.slice();
+}
+} catch (err) {
+console.error("Database connection failed:", err);
+MEMBERS = DEFAULT_MEMBERS.slice();
+} finally {
+populateSelectOptions();
+renderAll();
+}
+}
+async function saveRosterToSupabase() {
+if (!supabaseClient || !currentUser) {
+alert("Authentication required to make database changes.");
+return;
+}
+try {
+var delRes = await supabaseClient.from('roster').delete().neq('id', 0);
+if (delRes.error) throw delRes.error;
+var payload = MEMBERS.map(function(name, idx) {
+return { name: name, display_order: idx + 1 };
+});
+var insRes = await supabaseClient.from('roster').insert(payload);
+if (insRes.error) throw insRes.error;
+} catch (err) {
+alert("Failed to update database: " + err.message);
+}
+}
+async function checkAuthSession() {
+if (!supabaseClient) return;
+var sessionRes = await supabaseClient.auth.getSession();
+if (sessionRes.data && sessionRes.data.session) {
+currentUser = sessionRes.data.session.user;
+} else {
+currentUser = null;
+}
+updateAuthUI();
+}
+function updateAuthUI() {
+var toggleBtn = document.getElementById('btnAdminToggle');
+var addForm = document.getElementById('addMemberForm');
+var lockNotice = document.getElementById('adminLockNotice');
+if (currentUser) {
+if (toggleBtn) toggleBtn.textContent = "Log Out (" + currentUser.email + ")";
+if (addForm) addForm.classList.remove('hidden');
+if (lockNotice) lockNotice.classList.add('hidden');
+} else {
+if (toggleBtn) toggleBtn.textContent = "Admin Login";
+if (addForm) addForm.classList.add('hidden');
+if (lockNotice) lockNotice.classList.remove('hidden');
+}
+renderMemberChips();
+}
+async function handleLogin(email, password) {
+if (!supabaseClient) {
+alert("Supabase is not initialized.");
+return;
+}
+var authRes = await supabaseClient.auth.signInWithPassword({
+email: email,
+password: password
+});
+if (authRes.error) {
+alert("Login failed: " + authRes.error.message);
+} else {
+currentUser = authRes.data.user;
+closeLoginModal();
+updateAuthUI();
+}
+}
+async function handleLogout() {
+if (!supabaseClient) return;
+await supabaseClient.auth.signOut();
+currentUser = null;
+updateAuthUI();
+}
+function openLoginModal() {
+document.getElementById('loginModal').classList.remove('hidden');
+}
+function closeLoginModal() {
+document.getElementById('loginModal').classList.add('hidden');
+document.getElementById('adminEmail').value = '';
+document.getElementById('adminPassword').value = '';
+}
+function calcDaysDifference(targetDate) {
+var anchorUtc = Date.UTC(ANCHOR_YEAR, ANCHOR_MONTH, ANCHOR_DAY);
+var targetUtc = Date.UTC(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate());
+var diffMs = targetUtc - anchorUtc;
+return Math.floor(diffMs / (1000 * 60 * 60 * 24));
+}
+function getDuties(dateObj) {
+var N = MEMBERS.length;
+if (N === 0) {
+return { conductor: "None", vip: "None", cIndex: -1, vIndex: -1 };
+}
+var diffDays = calcDaysDifference(dateObj);
+var conductorIndex = ((diffDays % N) + N) % N;
+var vipIndex = (conductorIndex + (VIP_OFFSET % N)) % N;
+return {
+conductor: MEMBERS[conductorIndex],
+vip: MEMBERS[vipIndex],
+cIndex: conductorIndex,
+vIndex: vipIndex
+};
+}
+function formatDateString(d) {
+var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+return months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+}
+function getDayNameString(d) {
+var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+return days[d.getDay()];
+}
+function formatYmdInput(d) {
+var y = d.getFullYear();
+var m = String(d.getMonth() + 1);
+if (m.length < 2) m = '0' + m;
+var day = String(d.getDate());
+if (day.length < 2) day = '0' + day;
+return y + '-' + m + '-' + day;
+}
+function renderAll() {
+try {
+var crewTagEl = document.getElementById('crewTag');
+if (crewTagEl) {
+crewTagEl.textContent = MEMBERS.length + " Mobster" + (MEMBERS.length === 1 ? "" : "s");
+}
+var dayNameEl = document.getElementById('dayNameDisplay');
+var dateDisplayEl = document.getElementById('dateDisplay');
+var dateInputEl = document.getElementById('dateInput');
+if (dayNameEl) dayNameEl.textContent = getDayNameString(selectedDate);
+if (dateDisplayEl) dateDisplayEl.textContent = formatDateString(selectedDate);
+if (dateInputEl) dateInputEl.value = formatYmdInput(selectedDate);
+var duties = getDuties(selectedDate);
+var condNameEl = document.getElementById('conductorName');
+var vipNameEl = document.getElementById('vipName');
+if (condNameEl) condNameEl.textContent = duties.conductor;
+if (vipNameEl) vipNameEl.textContent = duties.vip;
+renderMemberChips();
+renderScheduleTable();
+renderMemberLookup();
+} catch (e) {
+console.error("Error updating UI: ", e);
+}
+}
+function renderMemberChips() {
+var container = document.getElementById('memberChips');
+if (!container) return;
+container.innerHTML = '';
+MEMBERS.forEach(function(member, index) {
+var chip = document.createElement('div');
+chip.className = 'member-chip';
+var num = document.createElement('span');
+num.className = 'member-chip-num';
+num.textContent = '#' + (index + 1);
+var nameSpan = document.createElement('span');
+nameSpan.textContent = member;
+chip.appendChild(num);
+chip.appendChild(nameSpan);
+if (currentUser) {
+var actions = document.createElement('div');
+actions.className = 'chip-actions';
+var upBtn = document.createElement('button');
+upBtn.className = 'btn btn-sm';
+upBtn.type = 'button';
+upBtn.innerHTML = '▲';
+upBtn.title = 'Move Up';
+upBtn.disabled = index === 0;
+upBtn.onclick = function() { moveMember(index, index - 1); };
+var downBtn = document.createElement('button');
+downBtn.className = 'btn btn-sm';
+downBtn.type = 'button';
+downBtn.innerHTML = '▼';
+downBtn.title = 'Move Down';
+downBtn.disabled = index === MEMBERS.length - 1;
+downBtn.onclick = function() { moveMember(index, index + 1); };
+var removeBtn = document.createElement('button');
+removeBtn.className = 'btn btn-sm btn-danger';
+removeBtn.type = 'button';
+removeBtn.innerHTML = '×';
+removeBtn.title = 'Remove Member';
+removeBtn.onclick = function() { removeMember(index); };
+actions.appendChild(upBtn);
+actions.appendChild(downBtn);
+actions.appendChild(removeBtn);
+chip.appendChild(actions);
+}
+container.appendChild(chip);
+});
+}
+function moveMember(fromIdx, toIdx) {
+if (!currentUser) return;
+if (toIdx < 0 || toIdx >= MEMBERS.length) return;
+var item = MEMBERS.splice(fromIdx, 1)[0];
+MEMBERS.splice(toIdx, 0, item);
+populateSelectOptions();
+renderAll();
+saveRosterToSupabase();
+}
+function addMember(name) {
+if (!currentUser) return;
+var trimmed = name.trim();
+if (!trimmed) return;
+if (MEMBERS.indexOf(trimmed) !== -1) {
+alert("Member '" + trimmed + "' is already in the roster.");
+return;
+}
+MEMBERS.push(trimmed);
+populateSelectOptions();
+renderAll();
+saveRosterToSupabase();
+}
+function removeMember(index) {
+if (!currentUser) return;
+if (MEMBERS.length <= 1) {
+alert("You must keep at least one member in the roster.");
+return;
+}
+var removed = MEMBERS[index];
+if (confirm("Remove '" + removed + "' from the train rota?")) {
+MEMBERS.splice(index, 1);
+populateSelectOptions();
+renderAll();
+saveRosterToSupabase();
+}
+}
+function renderScheduleTable() {
+var tbody = document.getElementById('scheduleTableBody');
+if (!tbody) return;
+tbody.innerHTML = '';
+for (var i = 0; i < 14; i++) {
+var rowDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate() + i);
+var rowDuties = getDuties(rowDate);
+var isCurrent = (i === 0);
+var tr = document.createElement('tr');
+if (isCurrent) tr.className = 'row-selected';
+var daysShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+tr.innerHTML = '<td>' + formatDateString(rowDate) + (isCurrent ? ' <span class="crew-tag" style="font-size:0.55rem; padding:0.1rem 0.3rem;">Selected</span>' : '') + '</td>' +
+'<td>' + daysShort[rowDate.getDay()] + '</td>' +
+'<td><span class="tag-pill tag-conductor">' + rowDuties.conductor + '</span></td>' +
+'<td><span class="tag-pill tag-vip">' + rowDuties.vip + '</span></td>';
+tbody.appendChild(tr);
+}
+}
+function populateSelectOptions() {
+var select = document.getElementById('memberSelect');
+if (!select) return;
+var previousValue = select.value;
+select.innerHTML = '';
+if (MEMBERS.length === 0) {
+var opt = document.createElement('option');
+opt.value = "";
+opt.textContent = "-- No Members --";
+select.appendChild(opt);
+return;
+}
+for (var i = 0; i < MEMBERS.length; i++) {
+var opt = document.createElement('option');
+opt.value = MEMBERS[i];
+opt.textContent = MEMBERS[i];
+select.appendChild(opt);
+}
+if (MEMBERS.indexOf(previousValue) !== -1) {
+select.value = previousValue;
+} else {
+select.value = MEMBERS[0];
+}
+}
+function renderMemberLookup() {
+var select = document.getElementById('memberSelect');
+if (!select) return;
+var name = select.value;
+var targetIdx = -1;
+for (var i = 0; i < MEMBERS.length; i++) {
+if (MEMBERS[i] === name) {
+targetIdx = i;
+break;
+}
+}
+var cDateEl = document.getElementById('nextConductorDate');
+var cDaysEl = document.getElementById('nextConductorDays');
+var vDateEl = document.getElementById('nextVipDate');
+var vDaysEl = document.getElementById('nextVipDays');
+if (targetIdx === -1 || MEMBERS.length === 0) {
+if (cDateEl) cDateEl.textContent = '---';
+if (cDaysEl) cDaysEl.textContent = '---';
+if (vDateEl) vDateEl.textContent = '---';
+if (vDaysEl) vDaysEl.textContent = '---';
+return;
+}
+var curDuties = getDuties(selectedDate);
+var N = MEMBERS.length;
+var cDiff = (targetIdx - curDuties.cIndex) % N;
+if (cDiff < 0) cDiff += N;
+var vDiff = (targetIdx - curDuties.vIndex) % N;
+if (vDiff < 0) vDiff += N;
+var nextCDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate() + cDiff);
+var nextVDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate() + vDiff);
+if (cDateEl) cDateEl.textContent = formatDateString(nextCDate);
+if (cDaysEl) cDaysEl.textContent = cDiff === 0 ? "Today!" : "In " + cDiff + " day" + (cDiff > 1 ? "s" : "");
+if (vDateEl) vDateEl.textContent = formatDateString(nextVDate);
+if (vDaysEl) vDaysEl.textContent = vDiff === 0 ? "Today!" : "In " + vDiff + " day" + (vDiff > 1 ? "s" : "");
+}
+function bindEvents() {
+var btnPrev = document.getElementById('btnPrev');
+if (btnPrev) {
+btnPrev.onclick = function() {
+selectedDate.setDate(selectedDate.getDate() - 1);
+renderAll();
+};
+}
+var btnNext = document.getElementById('btnNext');
+if (btnNext) {
+btnNext.onclick = function() {
+selectedDate.setDate(selectedDate.getDate() + 1);
+renderAll();
+};
+}
+var btnToday = document.getElementById('btnToday');
+if (btnToday) {
+btnToday.onclick = function() {
+selectedDate = new Date();
+renderAll();
+};
+}
+var dateInput = document.getElementById('dateInput');
+if (dateInput) {
+dateInput.onchange = function(e) {
+if (e.target.value) {
+var parts = e.target.value.split('-');
+selectedDate = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+renderAll();
+}
+};
+}
+var memberSelect = document.getElementById('memberSelect');
+if (memberSelect) {
+memberSelect.onchange = function() {
+renderMemberLookup();
+};
+}
+var addForm = document.getElementById('addMemberForm');
+if (addForm) {
+addForm.onsubmit = function(e) {
+e.preventDefault();
+var input = document.getElementById('newMemberName');
+if (input && input.value) {
+addMember(input.value);
+input.value = '';
+}
+};
+}
+var adminToggleBtn = document.getElementById('btnAdminToggle');
+if (adminToggleBtn) {
+adminToggleBtn.onclick = function() {
+if (currentUser) {
+handleLogout();
+} else {
+openLoginModal();
+}
+};
+}
+var loginForm = document.getElementById('loginForm');
+if (loginForm) {
+loginForm.onsubmit = function(e) {
+e.preventDefault();
+var email = document.getElementById('adminEmail').value;
+var pass = document.getElementById('adminPassword').value;
+handleLogin(email, pass);
+};
+}
+var cancelLoginBtn = document.getElementById('btnCancelLogin');
+if (cancelLoginBtn) {
+cancelLoginBtn.onclick = closeLoginModal;
+}
+}
+async function initApp() {
+try {
+populateSelectOptions();
+bindEvents();
+renderAll();
+await checkAuthSession();
+await fetchRosterFromSupabase();
+} catch(err) {
+console.error("Init Error: ", err);
+}
+}
+if (document.readyState === 'loading') {
+document.addEventListener('DOMContentLoaded', initApp);
+} else {
+initApp();
+}
+})();
+</script>
+</body>
+</html>
